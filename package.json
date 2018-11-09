@@ -1,0 +1,23 @@
+{
+  "name": "MOBILE-APP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mSinisa/NYSL-Mobile-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mSinisa/NYSL-Mobile-App/issues"
+  },
+  "homepage": "https://github.com/mSinisa/NYSL-Mobile-App#readme",
+  "dependencies": {
+    "lite-server": "^2.4.0"
+  }
+}

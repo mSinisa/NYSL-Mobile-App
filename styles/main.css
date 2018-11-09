@@ -1,9 +1,14 @@
 /*** DEFAULTS *****/
-body{
-  font-family: 'Hammersmith One', sans-serif;
+body {
+    font-family: 'Hammersmith One', sans-serif;
 }
-.noMargin{
-margin: 0;
+
+.noMargin {
+    margin: 0;
+}
+
+div#app.container-flow {
+    margin-bottom: 50px;
 }
 
 /* DARK GREEN #3d5b40  LIGHT GREEN #7af442 */
@@ -16,89 +21,124 @@ margin: 0;
 
 .NYSL {
     background: black;
-    color:white;
+    color: white;
     height: 50px;
 }
 
-.slidingMenu{
-border-bottom: 1px solid black;
+.slidingMenu {
+    border-bottom: 1px solid black;
 }
 
-.slidingText{
-font-size: 20px;
-margin-top: 5px;
+.slidingText {
+    font-size: 20px;
+    margin-top: 5px;
 }
 
-div.slick-slide.slick-current.slick-active.slick-center{
-width:150px;
-border-bottom: 5px solid #7af442;
-text-align: center;
+div.slick-slide.slick-current.slick-active.slick-center {
+    width: 150px;
+    border-bottom: 5px solid #7af442;
+    text-align: center;
 }
 
-div.slick-slide{
-width:100px;
-text-align: center;
+div.slick-slide {
+    width: 100px;
+    text-align: center;
 }
+
 /***** NAVBAR *****/
-.navTop{
-border-bottom: 1px solid black;
-padding: 0;
-height: 50px;
-background-color: #c1c1c1;
-/*background-color: #3d5b40;*/
+.navTop {
+    border-bottom: 1px solid black;
+    padding: 0;
+    height: 50px;
+    background-color: #c1c1c1;
+    /*background-color: #3d5b40;*/
 }
 
-.linkTop{
-color:black;
+.linkTop {
+    color: black;
 }
 
-.nav-link:active{
-color:#7af442;
+.nav-link:active {
+    color: #7af442;
 }
 
 
 /*** FOOTER ****/
-.footer{
-height:50px;
-background-color: black;
-padding: 2px;
+.footer {
+    height: 50px;
+    background-color: black;
+    padding: 2px;
 }
 
-.iconText{
-margin: 0;
-padding: 0;
-font-size: 10px;
+.iconText {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
 }
 
-.bottomButton{
+.bottomButton {
     margin-top: 4px;
     color: #c1c1c1;
 }
 
-.activeButton{
-color:#7af442;
+.activeButton {
+    color: #7af442;
 }
 
 /**** BODY W1*****/
-.gameDate{
-background-color: #3d5b40;
-color: white;
-text-align: center;
+.gameDate {
+    background-color: #3d5b40;
+    color: white;
+    text-align: center;
 }
 
-.gameInfo{
-border-bottom: 1px solid gray;
+.gameInfo {
+    border-bottom: 1px solid gray;
 }
 
-.teamInfo{
-width:35%;
-margin-top: 16px;
+.teamInfo {
+    width: 35%;
+    margin-top: 16px;
 }
 
-.score{
-font-weight: bold;
-font-size: 35px;}
-.scheduleLogo{
-width:40px;
-height: 40px;
+.score {
+    font-weight: bold;
+    font-size: 35px;
 }
+
+.scheduleLogo {
+    width: 40px;
+    height: 40px;
+}
+
+/**** LOCATIONS *****/
+.stadium {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.stadiumLink {
+    background-color: #3d5b40;
+    height: 90px;
+}
+
+.stadiumButton {
+    color: white;
+}
+
+iframe {
+    width: 95%;
+    height: 95%;
+    border-radius: 5%;
+    margin: 3px;
+}
+
+.map {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 5%;
+    margin: 30px auto;
+    background-color: #e8e8e8;
+}
+
