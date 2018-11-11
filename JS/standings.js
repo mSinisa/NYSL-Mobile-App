@@ -1,8 +1,7 @@
 var app = new Vue({
     el: "#app",
     data: {
-        week: "",
-        info: info.league_schedule,
+
         teams: info.teams,
 
     },

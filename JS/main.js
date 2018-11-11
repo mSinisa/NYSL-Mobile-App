@@ -1,8 +1,9 @@
 var app = new Vue({
     el: "#app",
     data: {
-        week: "",
-        info: info.league_schedule,
+        dates:info.dates,
+        games: info.games,
+    
     },
     computed: {
         getWeek: function() {

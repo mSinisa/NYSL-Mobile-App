@@ -11,6 +11,10 @@ div#app.container-flow {
     margin-bottom: 50px;
 }
 
+div.card-body{
+padding: 0;
+}
+
 /* DARK GREEN #3d5b40  LIGHT GREEN #7af442 */
 /**** HEADER *****/
 .logoImg {
@@ -49,7 +53,7 @@ div.slick-slide {
 .navTop {
     border-bottom: 1px solid black;
     padding: 0;
-    height: 50px;
+    height: 7vh;
     background-color: #c1c1c1;
     /*background-color: #3d5b40;*/
 }
@@ -94,6 +98,7 @@ div.slick-slide {
 
 .gameInfo {
     border-bottom: 1px solid gray;
+    width: 100%;
 }
 
 .teamInfo {
@@ -120,6 +125,16 @@ div.slick-slide {
 .stadiumLink {
     background-color: #3d5b40;
     height: 90px;
+    /*    text-align: center;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .stadiumButton {
@@ -142,3 +157,44 @@ iframe {
     background-color: #e8e8e8;
 }
 
+/***** TEAMS PAGE *******/
+.team {
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.teamsPageLogo {
+    width: 90px;
+    height: 90px;
+}
+
+/***** TEAM ****/
+.teamBackground0 {
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(rgba(62, 57, 57, 0.89), rgba(62, 57, 57, 0.6), rgba(62, 57, 57, 0.89)), url("/styles/images/la_bombonera.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.individualTeamPageLogo {
+    width: 20vh;
+    height: 20vh;
+}
+
+.navTeam{
+ border-bottom: 1px solid black;
+    padding: 0;
+    height: 7vh;
+    background-color: #202371;}
+
+.teamLink{
+color: #848f9b;
+}
+
+.teamLinkActive{
+color: white;}
+
+.addressSection{
+border-bottom: 5px solid #202371;
+padding: 2vh 0;}

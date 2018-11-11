@@ -26,9 +26,10 @@
             <a class="nav-link linkTop" href="standings.html">Standings</a>
             <a class="nav-link linkTop" href="locations.html">Locations</a>
         </nav>
-        
-<!--<input type="radio" v-model="week" style="display: none" value="1">-->
-       
+
+        <!--<input type="radio" v-model="week" style="display: none" value="1">-->
+
+        <!--
         <div class="slidingMenu">
             <div class="slidingText"><a href="index.html"> week 1</a></div>
             <div class="slidingText"><a href="week2.html">week 2</a></div>
@@ -37,34 +38,60 @@
             <div class="slidingText"><a href="#">week 5</a></div>
             <div class="slidingText"><a href="#">week 6</a></div>
         </div>
+-->
+        <div class="accordion" id="accordionExample">
+            <div class="card" v-for="(game, index) in games">
+                <div class="card-header stadiumLink" :id="index">
+                    <h5 class="mb-0">
+                        <button class="stadiumButton btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse`+index" aria-expanded="true" :aria-controls="`collapse`+index">
+                            {{game.date}}
+                        </button>
+                    </h5>
+                </div>
 
-        <div class="weekSchedule">
-            <div class="gameDate">
-                <h5 class="m-0"> September 1</h5>
-            </div>
-            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/blue_devils_logo.png">Blue Devils</p>
-                <p class="score">2-1</p>
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/northside_jaguars_logo.png">Jaguars</p>
-            </div>
-            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/blue_devils_logo.png">Blue Devils</p>
-                <p class="score">2-1</p>
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/northside_jaguars_logo.png">Jaguars</p>
-            </div>
-            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/blue_devils_logo.png">Blue Devils</p>
-                <p class="score">2-1</p>
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/northside_jaguars_logo.png">Jaguars</p>
+                <div :id="`collapse`+index" class="collapse" :aria-labelledby="index" data-parent="#accordionExample">
+                    <div class="card-body">
+
+                        <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                              <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game1logo1 +`.png`">{{game.game1team1}}</p>                      
+                            <p class="score">{{game.game1score}}</p>                      
+                            <p class="teamInfo d-flex flex-column justify-content-center align-items-center">  <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game1logo2 +`.png`">{{game.game1team2}}</p>                
+                        </div>
+                        <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                              <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo1 +`.png`">{{game.game2team1}}</p>                      
+                            <p class="score">{{game.game2score}}</p>                      
+                            <p class="teamInfo d-flex flex-column justify-content-center align-items-center">  <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo2 +`.png`">{{game.game2team2}}</p>                
+                        </div>
+                        <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                              <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo1 +`.png`">{{game.game3team1}}</p>                      
+                            <p class="score">{{game.game3score}}</p>                      
+                            <p class="teamInfo d-flex flex-column justify-content-center align-items-center">  <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo2 +`.png`">{{game.game3team2}}</p>                
+                        </div>
+
+<!--                        <div>
+                            <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo1 +`.png`">{{game.game2team1}}
+                            <p class="score">{{game.game2score}}</p>
+                            <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo2 +`.png`">{{game.game2team2}}
+
+                        </div>-->
+
+<!--                        <div>
+                            <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo1 +`.png`">{{game.game3team1}}
+                            <p class="score">{{game.game3score}}</p>
+                            <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo2 +`.png`">{{game.game3team2}}
+
+                        </div>-->
+
+                    </div>
+                </div>
             </div>
         </div>
-
 
         <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center activeButton" href="index.html"><i class="homeButton fas fa-home fa-2x"></i>
                 <p class="iconText">Home</p>
             </a>
-            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-users fa-2x"></i>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="teams.html"><i class="fas fa-users fa-2x"></i>
                 <p class="iconText">Teams</p>
             </a>
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-plus-circle fa-2x"></i>
