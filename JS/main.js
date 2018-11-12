@@ -1,7 +1,6 @@
 var app = new Vue({
     el: "#app",
     data: {
-        dates:info.dates,
         games: info.games,
     
     },

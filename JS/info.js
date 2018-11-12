@@ -1,28 +1,16 @@
 var info = {
-    dates: [{
-            week: "Week 1",
-            date: "September 1"
-        },
-        {
-            week: "Week 2",
-            date: "September 8",
-        },
-        {
-            week: "Week 3",
-            date: "September 15",
-        },
-        {
-            week: "Week 4",
-            date: "September 22"
-        },
-        {
-            week: "Week 5",
-            date: "September 29"
-        },
-        {
-            week: "Week 6",
-            date: "October 6"
-        }],
+
+    league: {
+        goals: 9.8,
+        goals_conceded: 9.5,
+        shots: 48.7,
+        on_target: 22.5,
+        passes: 2051,
+        fouls_suffered: 54,
+        fouls_committed: 49,
+        yellow_cards: 3.5,
+        red_cards: 0.8,
+    },
 
     games: [{
             date: "September 1",
@@ -161,11 +149,147 @@ var info = {
         won: 4,
         draw: 1,
         lost: 1,
+        goals: 10,
+        goals_conceded: 4,
+        shots: 55,
+        on_target: 20,
+        passes: 2055,
+        fouls_suffered: 62,
+        fouls_committed: 41,
+        yellow_cards: 3,
+        red_cards: 1,
         address: "24 W. Walton St., Chicago, IL 60610",
         stadium_name: "La Bombonera",
         html_page: "blue_devils.html",
         mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.6542135574196!2d-87.6312383852653!3d41.90029307922041!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24+W+Walton+St%2C+Chicago%2C+IL+60610%2C+USA!5e0!3m2!1sen!2ses!4v1541776203124",
-        color: "#202371"
+        color: "#1d40d4",
+        players: [{
+                name: "John Smith",
+                jersey: 1,
+                age: 14,
+                height: "180 cm",
+                weight: "70 kg",
+                position: "Goalkeeper",
+                passes: 350,
+                fouls_committed: 0,
+                fouls_suffered: 4,
+                goals_conceded: 4,
+                saves: 12,
+                yellow_cards: 0,
+                red_cards: 0,
+},
+            {
+                name: "Frank Wilson",
+                jersey: 4,
+                age: 15,
+                height: "178 cm",
+                weight: "71 kg",
+                position: "Defender",
+                passes: 380,
+                fouls_committed: 10,
+                fouls_suffered: 14,
+                yellow_cards: 1,
+                red_cards: 1,
+                shots: 4,
+                on_target: 1,
+                goals: 0
+                 },
+            {
+                name: "Christian Brown",
+                jersey: 6,
+                age: 14,
+                height: "170 cm",
+                weight: "69 kg",
+                position: "Defender",
+                passes: 270,
+                fouls_committed: 15,
+                fouls_suffered: 15,
+                yellow_cards: 1,
+                red_cards: 0,
+                shots: 6,
+                on_target: 1,
+                goals: 1
+                 },
+            {
+                name: "Diego Salazar",
+                jersey: 8,
+                age: 14,
+                height: "173 cm",
+                weight: "66 kg",
+                position: "Midfielder",
+                passes: 480,
+                fouls_committed: 14,
+                fouls_suffered: 18,
+                yellow_cards: 1,
+                red_cards: 0,
+                shots: 20,
+                on_target: 8,
+                goals: 3
+            },
+            {
+                name: "Michael Breler",
+                jersey: 9,
+                age: 15,
+                height: "170 cm",
+                weight: "65 kg",
+                position: "Forward",
+                passes: 100,
+                fouls_committed: 2,
+                fouls_suffered: 11,
+                yellow_cards: 0,
+                red_cards: 0,
+                shots: 20,
+                on_target: 10,
+                goals: 6
+            }],
+        schedule: [{
+                date: "September 1",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Jaguars",
+                game1logo2: "northside_jaguars_logo",
+                game1score: "2 - 1"
+        },
+            {
+                date: "September 8",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Green Snakes",
+                game1logo2: "green_snakes_logo",
+                game1score: "2 - 0"
+            },
+            {
+                date: "September 15",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Horned Frogs",
+                game1logo2: "horned_frogs_logo",
+                game1score: "0 - 1"
+            },
+            {
+                date: "September 22",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Golden Eagles",
+                game1logo2: "golden_eagles_logo",
+                game1score: "1 - 0"
+            },
+            {
+                date: "September 29",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Red Raiders",
+                game1logo2: "red_raiders_logo",
+                game1score: "2 - 2"
+            },
+            {
+                date: "October 6",
+                game1team1: "Blue Devils",
+                game1logo1: "blue_devils_logo",
+                game1team2: "Jaguars",
+                game1logo2: "northside_jaguars_logo",
+                game1score: "3 - 0"
+            }]
 
     }, {
         Name: "Green Snakes",
@@ -175,10 +299,20 @@ var info = {
         won: 0,
         draw: 0,
         lost: 6,
+        goals: 6,
+        goals_conceded: 17,
+        shots: 22,
+        on_target: 9,
+        passes: 1780,
+        fouls_suffered: 40,
+        fouls_committed: 48,
+        yellow_cards: 2,
+        red_cards: 1,
         address: "1734 N. Orleans St., Chicago, IL 60614",
         stadium_name: "Celtic Park",
         html_page: "green_snakes.html",
-        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0258285480745!2d-87.64002868526472!3d41.91380347921943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734+N+Orleans+St%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776524378"
+        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0258285480745!2d-87.64002868526472!3d41.91380347921943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734+N+Orleans+St%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776524378",
+        color: "olive"
 
     }, {
         Name: "Horned Frogs",
@@ -188,10 +322,20 @@ var info = {
         won: 2,
         draw: 3,
         lost: 1,
+        goals: 9,
+        goals_conceded: 10,
+        shots: 60,
+        on_target: 18,
+        passes: 2101,
+        fouls_suffered: 58,
+        fouls_committed: 55,
+        yellow_cards: 5,
+        red_cards: 0,
         address: "2245 N. Southport Ave., Chicago, IL 60614",
         stadium_name: "Stadio Artemio Franchi",
         html_page: "horned_frogs.html",
-        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.585683085622!2d-87.66511458526429!3d41.92326457921858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e37f9b8d2d%3A0x62ad8b907dd755d6!2s2245+N+Southport+Ave%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776607845"
+        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.585683085622!2d-87.66511458526429!3d41.92326457921858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd2e37f9b8d2d%3A0x62ad8b907dd755d6!2s2245+N+Southport+Ave%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776607845",
+        color: "#6929a8"
 
     }, {
         Name: "Jaguars",
@@ -201,10 +345,20 @@ var info = {
         won: 1,
         draw: 2,
         lost: 3,
+        goals: 8,
+        goals_conceded: 11,
+        shots: 28,
+        on_target: 15,
+        passes: 1942,
+        fouls_suffered: 52,
+        fouls_committed: 50,
+        yellow_cards: 2,
+        red_cards: 2,
         address: "2625 N. Orchard St., Chicago, IL 6061",
         stadium_name: "Estádio José Alvalade",
         html_page: "jaguars.html",
-        mapsrc: "https://www.google.com/maps/embed?pb="
+        mapsrc: "https://www.google.com/maps/embed?pb=",
+        color: "#053c05"
     }, {
         Name: "Red Raiders",
         logo: "red_raiders_logo",
@@ -213,10 +367,20 @@ var info = {
         won: 5,
         draw: 1,
         lost: 0,
+        goals: 17,
+        goals_conceded: 5,
+        shots: 72,
+        on_target: 41,
+        passes: 2448,
+        fouls_suffered: 60,
+        fouls_committed: 44,
+        yellow_cards: 4,
+        red_cards: 0,
         address: "1409 N. Ogden Ave., Chicago, IL 60610",
         stadium_name: "Anfield",
         html_page: "red_raiders.html",
-        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.336488231587!2d-87.64835588526502!3d41.90712467921986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd33af13a8945%3A0xb6ad1ec2b6f379ba!2s1409+N+Ogden+Ave%2C+Chicago%2C+IL+60610%2C+USA!5e0!3m2!1sen!2ses!4v1541776731509"
+        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.336488231587!2d-87.64835588526502!3d41.90712467921986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd33af13a8945%3A0xb6ad1ec2b6f379ba!2s1409+N+Ogden+Ave%2C+Chicago%2C+IL+60610%2C+USA!5e0!3m2!1sen!2ses!4v1541776731509",
+        color: "#741515"
 
     }, {
         Name: "Golden Eagles",
@@ -226,10 +390,20 @@ var info = {
         won: 1,
         draw: 3,
         lost: 2,
+        goals: 9,
+        goals_conceded: 10,
+        shots: 55,
+        on_target: 32,
+        passes: 1980,
+        fouls_suffered: 52,
+        fouls_committed: 56,
+        yellow_cards: 5,
+        red_cards: 1,
         address: "2101 N. Fremont St., Chicago, IL 60614",
         stadium_name: "Mestalla Stadium",
         html_page: "golden_eagles.html",
-        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.7480203091445!2d-87.65355788526448!3d41.919775279218904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3196fb41dc7%3A0x970be7f7d6336df5!2s2101+N+Fremont+St%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776777327"
+        mapsrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.7480203091445!2d-87.65355788526448!3d41.919775279218904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3196fb41dc7%3A0x970be7f7d6336df5!2s2101+N+Fremont+St%2C+Chicago%2C+IL+60614%2C+USA!5e0!3m2!1sen!2ses!4v1541776777327",
+        color: "#d17300"
     }]
 
 

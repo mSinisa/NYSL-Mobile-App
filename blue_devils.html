@@ -16,15 +16,11 @@
 <body>
     <div id="app" class="container-flow">
 
-          
-        <nav class="navTeam sticky-top navbar navbar-expand-sm d-flex flex-row justify-content-around align-items-center">
+        <nav :style="{ 'background-color': teams[0].color }" class="navTeam sticky-top navbar navbar-expand-sm d-flex flex-row justify-content-around align-items-center">
             <a class="teamLink teamLinkActive" href="#">Overview</a>
-            <a class="teamLink " href="#">Stats</a>
-            <a class="teamLink " href="#">Players</a>
+            <a class="teamLink " href="#stats">Stats</a>
+            <a class="teamLink " href="#players">Players</a>
         </nav>
-        
-        
-
 
         <div class="teamBackground0 d-flex flex-column align-items-center justify-content-between">
             <img v-bind:src="getLogo(teams[0])" class="individualTeamPageLogo mt-3">
@@ -32,37 +28,97 @@
             <div><i class="fas fa-phone fa-2x"></i> <i class="far fa-envelope fa-2x"></i> <i class="fab fa-instagram fa-2x"></i> <i class="fab fa-twitter fa-2x"></i> <i class="fab fa-facebook-f fa-2x"></i>
             </div>
         </div>
-        
+
         <div class="addressSection d-flex flex-column align-items-center">
-        <p class="noMargin">ADDRESS</p>
-        <h3 class="noMargin">{{teams[0].stadium_name}}</h3>
-        <p class="noMargin">{{teams[0].address}}</p>
+            <p class="noMargin">ADDRESS</p>
+            <h3 class="noMargin">{{teams[0].stadium_name}}</h3>
+            <p class="noMargin">{{teams[0].address}}</p>
+        </div>
+
+        <div class="homeSchedule">
+            <h4 :style="{ 'background-color': teams[0].color }" class="text-center text-white">Schedule</h4>
+
+            <div v-for="schedule in teams[0].schedule">
+                <p class="text-center noMargin mt-2">{{schedule.date}}</p>
+
+                <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                    <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" v-bind:src="`/styles/images/` + schedule.game1logo1 +`.png`">{{schedule.game1team1}}</p>
+                    <p class="score">{{schedule.game1score}}</p>
+
+                    <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" v-bind:src="`/styles/images/` + schedule.game1logo2 +`.png`">{{schedule.game1team2}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="stats">
+            <h4 :style="{ 'background-color': teams[0].color }" class="text-center text-white">Stats</h4>
+            <h4 class="text-center">2018</h4>
+            <div class="d-flex justify-content-between">
+                <div class="d-flex flex-column align-items-center"><img class="teamsPageLogo" v-bind:src="getLogo(teams[0])">
+                    <p>{{teams[0].Name}}</p>
+                </div>
+
+                <div class="d-flex flex-column align-items-center"><img class="teamsPageLogo" src="styles/images/nysl_logo.png">
+                    <p>NYSL Averages</p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].goals}}</p>
+                <p>Goals</p>
+                <p>{{league.goals}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].goals_conceded}}</p>
+                <p>Goals Conceded</p>
+                <p>{{league.goals_conceded}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].shots}}</p>
+                <p>Shots</p>
+                <p>{{league.shots}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].on_target}}</p>
+                <p>Shots on Target</p>
+                <p>{{league.on_target}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].passes}}</p>
+                <p>Passes</p>
+                <p>{{league.passes}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].fouls_suffered}}</p>
+                <p>Fouls Suffered</p>
+                <p>{{league.fouls_suffered}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].fouls_committed}}</p>
+                <p>Fouls committed</p>
+                <p>{{league.fouls_committed}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].yellow_cards}}</p>
+                <p>Yellow cards</p>
+                <p>{{league.yellow_cards}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+                <p>{{teams[0].red_cards}}</p>
+                <p>Red cards</p>
+                <p>{{league.red_cards}}</p>
+            </div>
         </div>
         
-        <div class="homeSchedule">
-            <h4>Schedule</h4>
-              <div v-for="team in info">
-              <p>{{team.date}}</p>
-              </div> 
-                <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/blue_devils_logo.png">Blue Devils</p>
-                <p class="score">2-1</p>
-                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" src="styles/images/northside_jaguars_logo.png">Jaguars</p>
-            </div>
-           
+        <div id="players">
+        <h4>Players</h4>
         </div>
-     
-
-
-
-
-
 
         <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center " href="index.html"><i class="homeButton fas fa-home fa-2x "></i>
                 <p class="iconText">Home</p>
             </a>
-            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center activeButton" href="teams.html"><i class="fas fa-users fa-2x"></i>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="teams.html"><i class="fas fa-users fa-2x"></i>
                 <p class="iconText">Teams</p>
             </a>
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-plus-circle fa-2x"></i>

@@ -1,7 +1,18 @@
 /*** DEFAULTS *****/
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Hammersmith One', sans-serif;
 }
+
+/*blueD: #1d40d4 */
+/*greenS: olive*/
+/*hornedF:  #6929a8  */
+/*jaguars: #053c05 */
+/*redRaiders: #741515 */
+/*goldenE: #d17300*/
 
 .noMargin {
     margin: 0;
@@ -11,8 +22,8 @@ div#app.container-flow {
     margin-bottom: 50px;
 }
 
-div.card-body{
-padding: 0;
+div.card-body {
+    padding: 0;
 }
 
 /* DARK GREEN #3d5b40  LIGHT GREEN #7af442 */
@@ -124,7 +135,7 @@ div.slick-slide {
 
 .stadiumLink {
     background-color: #3d5b40;
-    height: 90px;
+    height: 13vh;
     /*    text-align: center;*/
     display: flex;
     align-items: center;
@@ -182,19 +193,20 @@ iframe {
     height: 20vh;
 }
 
-.navTeam{
- border-bottom: 1px solid black;
+.navTeam {
+    border-bottom: 2px solid black;
     padding: 0;
     height: 7vh;
-    background-color: #202371;}
-
-.teamLink{
-color: #848f9b;
 }
 
-.teamLinkActive{
-color: white;}
+.teamLink {
+    color: #848f9b;
+}
 
-.addressSection{
-border-bottom: 5px solid #202371;
-padding: 2vh 0;}
+.teamLinkActive {
+    color: white;
+}
+
+.addressSection {
+    padding: 2vh 0;
+}

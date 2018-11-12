@@ -2,7 +2,8 @@ var app = new Vue({
     el: "#app",
     data: {
         teams: info.teams,
-        info: info.league_schedule
+        league:info.league
+
     },
 
     methods: {
@@ -19,12 +20,6 @@ var app = new Vue({
                 return "styles/images/northside_jaguars_logo.png";
             } else {
                 return "/styles/images/red_raiders_logo.png";
-            }
-        },
-
-        getTeamColor: function (team) {
-            if (team.logo.match(/horned_frogs_logo/g)) {
-                return "#202371";
             }
         }
 

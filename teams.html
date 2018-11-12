@@ -31,9 +31,10 @@
                 <div class=" d-flex flex-row justify-content-between">
                     <div class="d-flex flex-row">
                         <img class="teamsPageLogo" v-bind:src="getLogo(team)">
-                        <h3 class="d-flex align-self-center noMargin ml-4">{{team.Name}} </h3>
+                           <!--:style="{ 'background-color': teams[0].color }"-->
+                        <h3 :style="{ 'color': team.color }" class="d-flex align-self-center noMargin ml-4">{{team.Name}} </h3>
                     </div>
-                    <i class="fas fa-angle-right  fa-2x d-flex align-self-center"></i>
+                    <i :style="{ 'color': team.color }" class="fas fa-angle-right  fa-2x d-flex align-self-center mr-2"></i>
                 </div>
             </a>
         </div>
