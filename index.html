@@ -27,18 +27,6 @@
             <a class="nav-link linkTop" href="locations.html">Locations</a>
         </nav>
 
-        <!--<input type="radio" v-model="week" style="display: none" value="1">-->
-
-        <!--
-        <div class="slidingMenu">
-            <div class="slidingText"><a href="index.html"> week 1</a></div>
-            <div class="slidingText"><a href="week2.html">week 2</a></div>
-            <div class="slidingText"><a href="#">week 3</a></div>
-            <div class="slidingText"><a href="#">week 4</a></div>
-            <div class="slidingText"><a href="#">week 5</a></div>
-            <div class="slidingText"><a href="#">week 6</a></div>
-        </div>
--->
         <div class="accordion" id="accordionExample">
             <div class="card" v-for="(game, index) in games">
                 <div class="card-header stadiumLink" :id="index">

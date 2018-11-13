@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,7 +37,7 @@
         </div>
 
         <div class="homeSchedule">
-            <h4 :style="{ 'background-color': teams[0].color }" class="text-center text-white">Schedule</h4>
+            <h4 :style="{ 'background-color': teams[0].color }" class="teamColorHeadline flexJustifyAlignCenter">Schedule</h4>
 
             <div v-for="schedule in teams[0].schedule">
                 <p class="text-center noMargin mt-2">{{schedule.date}}</p>
@@ -51,68 +52,102 @@
         </div>
 
         <div id="stats">
-            <h4 :style="{ 'background-color': teams[0].color }" class="text-center text-white">Stats</h4>
-            <h4 class="text-center">2018</h4>
-            <div class="d-flex justify-content-between">
-                <div class="d-flex flex-column align-items-center"><img class="teamsPageLogo" v-bind:src="getLogo(teams[0])">
+            <h4 :style="{ 'background-color': teams[0].color }" class="teamColorHeadline flexJustifyAlignCenter">Stats</h4>
+            <h4 class="text-center playerPositionHeadline" >2018</h4>
+            <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex flex-column align-items-center col-4 "><img class="teamsPageLogo" v-bind:src="getLogo(teams[0])">
                     <p>{{teams[0].Name}}</p>
                 </div>
-
-                <div class="d-flex flex-column align-items-center"><img class="teamsPageLogo" src="styles/images/nysl_logo.png">
-                    <p>NYSL Averages</p>
+                <div class="d-flex flex-column align-items-center col-4"><img class="teamsPageLogo " src="styles/images/nysl_logo.png">
+                    <p>NYSL Avg.</p>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].goals}}</p>
-                <p>Goals</p>
-                <p>{{league.goals}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].goals}}</p>
+                <p class="col-5 text-center">Goals</p>
+                <p class="text-center col-3">{{league.goals}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].goals_conceded}}</p>
-                <p>Goals Conceded</p>
-                <p>{{league.goals_conceded}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].goals_conceded}}</p>
+                <p class="col-5 text-center">Goals Conceded</p>
+                <p class="text-center col-3">{{league.goals_conceded}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].shots}}</p>
-                <p>Shots</p>
-                <p>{{league.shots}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].shots}}</p>
+                <p class="col-5 text-center">Shots</p>
+                <p class="text-center col-3">{{league.shots}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].on_target}}</p>
-                <p>Shots on Target</p>
-                <p>{{league.on_target}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].on_target}}</p>
+                <p class="col-5 text-center">Shots on Target</p>
+                <p class="text-center col-3">{{league.on_target}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].passes}}</p>
-                <p>Passes</p>
-                <p>{{league.passes}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].passes}}</p>
+                <p class="col-5 text-center">Passes</p>
+                <p class="text-center col-3">{{league.passes}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].fouls_suffered}}</p>
-                <p>Fouls Suffered</p>
-                <p>{{league.fouls_suffered}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].fouls_suffered}}</p>
+                <p class="col-5 text-center">Fouls Suffered</p>
+                <p class="text-center col-3">{{league.fouls_suffered}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].fouls_committed}}</p>
-                <p>Fouls committed</p>
-                <p>{{league.fouls_committed}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].fouls_committed}}</p>
+                <p class="col-5 text-center">Fouls committed</p>
+                <p class="text-center col-3">{{league.fouls_committed}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].yellow_cards}}</p>
-                <p>Yellow cards</p>
-                <p>{{league.yellow_cards}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].yellow_cards}}</p>
+                <p class="col-5 text-center">Yellow cards</p>
+                <p class="text-center col-3">{{league.yellow_cards}}</p>
             </div>
-            <div class="d-flex justify-content-between">
-                <p>{{teams[0].red_cards}}</p>
-                <p>Red cards</p>
-                <p>{{league.red_cards}}</p>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[0].red_cards}}</p>
+                <p class="col-5 text-center">Red cards</p>
+                <p class="text-center col-3">{{league.red_cards}}</p>
             </div>
         </div>
-        
+
         <div id="players">
-        <h4>Players</h4>
+            <h4 :style="{ 'background-color': teams[0].color }" class="teamColorHeadline flexJustifyAlignCenter ">Players</h4>
+            <div class="playersTextContainer">
+            <h5 class="text-center playerPositionHeadline" >GOALKEEPERS</h5>
+                <div class="flexJustifyAlignCenter playerRow">
+                    <h4 class="col-1 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[0].jersey}}</h4>
+                    <i class="far fa-user fa-2x col-2"></i>
+                    <h5 class=" col-8 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[0].name}}</h5>            
+                </div>
+            <h5 class="text-center playerPositionHeadline" >DEFENDERS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[1].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[1].name}}</h5>  
+            </div>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[2].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[2].name}}</h5>
+               
+            </div>
+            <h5 class="text-center playerPositionHeadline" >MIDFIELDERS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[3].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[3].name}}</h5>
+            
+            </div>
+            <h5 class="text-center playerPositionHeadline" >FORWARDS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[4].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[0].color }">{{teams[0].players[4].name}}</h5>
+                
+            </div>
+            </div>
         </div>
+
 
         <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center " href="index.html"><i class="homeButton fas fa-home fa-2x "></i>
@@ -145,4 +180,35 @@
     <script src="JS/info.js"></script>
     <script src="JS/blue_devils.js"></script>
 </body>
+
 </html>
+
+
+<!--
+            <div id="johnSmith">
+                <div class="playerPagePhoto d-flex flex-row">
+                    <i class="far fa-user fa-4x col-2 text-white mt-2 col-3 d-flex align-items-center mb-2"></i>
+                    <div class="col-9 d-flex flex-column justify-content-around">
+                        <h3 class="text-white text-center">{{teams[0].players[0].name}}</h3>
+                        <div class="d-flex flex-column justify-content-around">
+                            <div class="d-flex flex-row justify-content-around">
+                            <p class="text-white">AGE</p><p class="text-white">HEIGHT</p><p class="text-white">WEIGHT</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-around">
+                            <h4 class="text-white">{{teams[0].players[0].age}}</h4><h4 class="text-white">{{teams[0].players[0].height}}</h4><h4 class="text-white">{{teams[0].players[0].weight}}</h4>
+                        </div>
+                        </div>         
+                    </div>
+                </div>
+                <div class="playerPageInfo mt-3">
+                    <h4 :style="{ 'color': teams[0].color }" class="text-center mb-3">{{teams[0].players[0].position}}</h4>
+                    <div class="d-flex flex-row"><p class="col-6">Passes</p> <h4 class="col-2">{{teams[0].players[0].passes}}</h4></div>
+                     <div class="d-flex flex-row"><p class="col-6">Fouls Committed</p> <h4 class="col-2">{{teams[0].players[0].fouls_committed}}</h4></div>
+                     <div class="d-flex flex-row"><p class="col-6">Fouls Suffered</p> <h4 class="col-2">{{teams[0].players[0].fouls_suffered}}</h4></div>
+                      <div class="d-flex flex-row"><p class="col-6">Goals Conceded</p> <h4 class="col-2">{{teams[0].players[0].goals_conceded}}</h4></div>
+                         <div class="d-flex flex-row"><p class="col-6">Saves</p> <h4 class="col-2">{{teams[0].players[0].saves}}</h4></div>
+                          <div class="d-flex flex-row"><p class="col-6">Yellow Cards</p> <h4 class="col-2">{{teams[0].players[0].yellow_cards}}</h4></div>
+                           <div class="d-flex flex-row"><p class="col-6">Red Cards</p> <h4 class="col-2">{{teams[0].players[0].red_cards}}</h4></div>
+                            
+                </div>
+            </div>-->

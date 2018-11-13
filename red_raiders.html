@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>NYSL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+    <div id="app" class="container-flow">
+
+        <nav :style="{ 'background-color': teams[4].color }" class="navTeam sticky-top navbar navbar-expand-sm d-flex flex-row justify-content-around align-items-center">
+            <a class="teamLink teamLinkActive" href="#">Overview</a>
+            <a class="teamLink " href="#stats">Stats</a>
+            <a class="teamLink " href="#players">Players</a>
+        </nav>
+
+        <div class="teamBackground0 d-flex flex-column align-items-center justify-content-between">
+            <img v-bind:src="getLogo(teams[4])" class="individualTeamPageLogo mt-3">
+            <h3 class="text-white">{{teams[4].Name}}</h3>
+            <div><i class="fas fa-phone fa-2x"></i> <i class="far fa-envelope fa-2x"></i> <i class="fab fa-instagram fa-2x"></i> <i class="fab fa-twitter fa-2x"></i> <i class="fab fa-facebook-f fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="addressSection d-flex flex-column align-items-center">
+            <p class="noMargin">ADDRESS</p>
+            <h3 class="noMargin">{{teams[4].stadium_name}}</h3>
+            <p class="noMargin">{{teams[4].address}}</p>
+        </div>
+
+        <div class="homeSchedule">
+            <h4 :style="{ 'background-color': teams[4].color }" class="teamColorHeadline flexJustifyAlignCenter">Schedule</h4>
+
+            <div v-for="schedule in teams[4].schedule">
+                <p class="text-center noMargin mt-2">{{schedule.date}}</p>
+
+                <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                    <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" v-bind:src="`/styles/images/` + schedule.game1logo1 +`.png`">{{schedule.game1team1}}</p>
+                    <p class="score">{{schedule.game1score}}</p>
+
+                    <p class="teamInfo d-flex flex-column justify-content-center align-items-center"><img class="scheduleLogo" v-bind:src="`/styles/images/` + schedule.game1logo2 +`.png`">{{schedule.game1team2}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="stats">
+            <h4 :style="{ 'background-color': teams[4].color }" class="teamColorHeadline flexJustifyAlignCenter">Stats</h4>
+            <h4 class="text-center playerPositionHeadline" >2018</h4>
+            <div class="d-flex justify-content-between mt-3">
+                <div class="d-flex flex-column align-items-center col-4 "><img class="teamsPageLogo" v-bind:src="getLogo(teams[4])">
+                    <p>{{teams[4].Name}}</p>
+                </div>
+                <div class="d-flex flex-column align-items-center col-4"><img class="teamsPageLogo " src="styles/images/nysl_logo.png">
+                    <p>NYSL Avg.</p>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].goals}}</p>
+                <p class="col-5 text-center">Goals</p>
+                <p class="text-center col-3">{{league.goals}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].goals_conceded}}</p>
+                <p class="col-5 text-center">Goals Conceded</p>
+                <p class="text-center col-3">{{league.goals_conceded}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].shots}}</p>
+                <p class="col-5 text-center">Shots</p>
+                <p class="text-center col-3">{{league.shots}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].on_target}}</p>
+                <p class="col-5 text-center">Shots on Target</p>
+                <p class="text-center col-3">{{league.on_target}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].passes}}</p>
+                <p class="col-5 text-center">Passes</p>
+                <p class="text-center col-3">{{league.passes}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].fouls_suffered}}</p>
+                <p class="col-5 text-center">Fouls Suffered</p>
+                <p class="text-center col-3">{{league.fouls_suffered}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].fouls_committed}}</p>
+                <p class="col-5 text-center">Fouls committed</p>
+                <p class="text-center col-3">{{league.fouls_committed}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].yellow_cards}}</p>
+                <p class="col-5 text-center">Yellow cards</p>
+                <p class="text-center col-3">{{league.yellow_cards}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+                <p class="text-center col-3">{{teams[4].red_cards}}</p>
+                <p class="col-5 text-center">Red cards</p>
+                <p class="text-center col-3">{{league.red_cards}}</p>
+            </div>
+        </div>
+
+        <div id="players">
+            <h4 :style="{ 'background-color': teams[4].color }" class="teamColorHeadline flexJustifyAlignCenter ">Players</h4>
+            <div class="playersTextContainer">
+            <h5 class="text-center playerPositionHeadline" >GOALKEEPERS</h5>
+                <div class="flexJustifyAlignCenter playerRow">
+                    <h4 class="col-1 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[0].jersey}}</h4>
+                    <i class="far fa-user fa-2x col-2"></i>
+                    <h5 class=" col-8 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[0].name}}</h5>            
+                </div>
+            <h5 class="text-center playerPositionHeadline" >DEFENDERS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[1].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[1].name}}</h5>  
+            </div>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[2].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[2].name}}</h5>
+               
+            </div>
+            <h5 class="text-center playerPositionHeadline" >MIDFIELDERS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[3].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[3].name}}</h5>
+            
+            </div>
+            <h5 class="text-center playerPositionHeadline" >FORWARDS</h5>
+            <div class="flexJustifyAlignCenter playerRow">
+                <h4 class="col-1 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[4].jersey}}</h4>
+                <i class="far fa-user fa-2x col-2"></i>
+                <h5 class=" col-8 noMargin" :style="{ 'color': teams[4].color }">{{teams[4].players[4].name}}</h5>
+                
+            </div>
+            </div>
+        </div>
+
+
+        <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center " href="index.html"><i class="homeButton fas fa-home fa-2x "></i>
+                <p class="iconText">Home</p>
+            </a>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="teams.html"><i class="fas fa-users fa-2x"></i>
+                <p class="iconText">Teams</p>
+            </a>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-plus-circle fa-2x"></i>
+                <p class="iconText">Favourite</p>
+            </a>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-comments fa-2x"></i>
+                <p class="iconText">Chat</p>
+            </a>
+            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-lock fa-2x"></i>
+                <p class="iconText">Account</p>
+            </a>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="JS/info.js"></script>
+    <script src="JS/blue_devils.js"></script>
+</body>
+
+</html>
+
