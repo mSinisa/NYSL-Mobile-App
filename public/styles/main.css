@@ -51,13 +51,13 @@ div.card-body {
     border-bottom: 1px solid black;
     padding: 0;
     height: 8vh;
-    background-color: #c1c1c1;
+    background-color: #222222;
     position: sticky;
     /*background-color: #3d5b40;*/
 }
 
 .linkTop {
-    color: black;
+    color: #c1c1c1;
 }
 
 .nav-link:active {
@@ -135,7 +135,7 @@ div.card-body {
     align-items: center;
 }
 
-.stadiumButton {
+.stadiumButton, .stadiumButton:hover {
     color: white;
 }
 
@@ -210,9 +210,17 @@ margin: 0;
     color: #848f9b;
 }
 
+.teamLink:hover {
+    color: white;
+}
+
+/*
 .teamLinkActive {
     color: white;
 }
+*/
+
+
 
 .addressSection {
     padding: 2vh 0;

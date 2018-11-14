@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>NYSL</title>
+    <link rel="shortcut icon" href="styles/images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 
 </head>
@@ -16,19 +16,65 @@
 <body>
     <div id="app" class="container-flow">
 
+        <!--***************** HEADER & NAV ****************-->
+
         <div class="NYSL d-flex flex-row justify-content-center align-items-center ">
             <img class="logoImg" src="styles/images/nysl_logo.png">
             <h2 class="noMargin">NYSL</h2>
         </div>
 
-        <nav class="navTop sticky-top navbar navbar-expand-sm d-flex flex-row justify-content-around align-items-center">
-            <a class="nav-link linkTop  " href="index.html">Schedule</a>
-            <a class="nav-link linkTop activeButton" href="#">Standings</a>
-            <a class="nav-link linkTop" href="locations.html">Locations</a>
+        <nav class="navTop navbar sticky-top navbar-expand-sm d-flex flex-row justify-content-around align-items-center">
+            <a class="nav-link linkTop activeButton " href="index.html">
+                <h5 class="noMargin">Schedule</h5>
+            </a>
+            <a class="nav-link linkTop" href="#standingsBody">
+                <h5 class="noMargin">Standings</h5>
+            </a>
+            <a class="nav-link linkTop" href="locations.html">
+                <h5 class="noMargin">Locations</h5>
+            </a>
         </nav>
 
-        <!--<input type="radio" v-model="week" style="display: none" value="1">-->
-        <table class="table">
+        <!--********** BODY *************-->
+        <div id="indexBody">
+            <div class="accordion" id="accordionExample">
+                <div class="card" v-for="(game, index) in games">
+                    <div class="card-header stadiumLink" :id="index">
+                        <h5 class="mb-0">
+                            <button class="stadiumButton btn btn-link" type="button" data-toggle="collapse" :data-target="`#collapse`+index" aria-expanded="true" :aria-controls="`collapse`+index">
+                                <h4 class="noMargin">{{game.date}}</h4>
+                            </button>
+                        </h5>
+                    </div>
+                    <div :id="`collapse`+index" class="collapse" :aria-labelledby="index" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <h5 class="mb-0 mt-2" style="text-decoration: underline">{{game.game1location}}</h5>
+                            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game1logo1 +`.png`">{{game.game1team1}}</p>
+                                <p class="score">{{game.game1score}}</p>
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game1logo2 +`.png`">{{game.game1team2}}</p>
+                            </div>
+
+                            <h5 class="mb-0 mt-2" style="text-decoration: underline">{{game.game2location}}</h5>
+                            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo1 +`.png`">{{game.game2team1}}</p>
+                                <p class="score">{{game.game2score}}</p>
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game2logo2 +`.png`">{{game.game2team2}}</p>
+                            </div>
+                            <h5 class="mb-0 mt-2" style="text-decoration: underline">{{game.game3location}}</h5>
+                            <div class="gameInfo d-flex flex-row align-items-center justify-content-between">
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo1 +`.png`">{{game.game3team1}}</p>
+                                <p class="score">{{game.game3score}}</p>
+                                <p class="teamInfo d-flex flex-column justify-content-center align-items-center"> <img class="scheduleLogo" v-bind:src="`/styles/images/` + game.game3logo2 +`.png`">{{game.game3team2}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="standingsBody">
+                    <table class="table">
             <thead class="gameDate">
                 <tr>
                     <th class="text-center">#</th>
@@ -50,24 +96,16 @@
                     <td class="align-middle text-center">{{team.draw}}</td>
                     <td class="align-middle text-center">{{team.lost}}</td>
                 </tr>
-
             </tbody>
-
         </table>
-
-
-
-
-
+        </div>
+        <!--************* FOOTER *****************-->
         <div class="footer fixed-bottom d-flex justify-content-around align-items-center">
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center activeButton" href="index.html"><i class="homeButton fas fa-home fa-2x"></i>
                 <p class="iconText">Home</p>
             </a>
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="teams.html"><i class="fas fa-users fa-2x"></i>
                 <p class="iconText">Teams</p>
-            </a>
-            <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-plus-circle fa-2x"></i>
-                <p class="iconText">Favourite</p>
             </a>
             <a class="bottomButton nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i class="fas fa-comments fa-2x"></i>
                 <p class="iconText">Chat</p>
@@ -88,6 +126,6 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script src="JS/info.js"></script>
-    <script src="JS/standings.js"></script>
+    <script src="JS/main.js"></script>
 </body>
 </html>
