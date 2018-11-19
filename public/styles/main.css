@@ -7,10 +7,10 @@ body {
     font-family: 'Hammersmith One', sans-serif;
 }
 
-.flexJustifyAlignCenter{
-display: flex;
-justify-content:center;
-align-items:center;
+.flexJustifyAlignCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*blueD: #1d40d4 */
@@ -84,6 +84,10 @@ div.card-body {
     color: #c1c1c1;
 }
 
+.bottomButton:hover {
+    color: #7af442;
+}
+
 .activeButton {
     color: #7af442;
 }
@@ -95,9 +99,22 @@ div.card-body {
     text-align: center;
 }
 
+.standingsTH {
+    background-color: rgba(96, 177, 94, 0.99);
+    color: black;
+    text-align: center;
+}
+
+.standingsTR {
+    background-color: rgba(224, 255, 223, 0.99);
+    color: black;
+    text-align: center;
+}
+
 .gameInfo {
     border-bottom: 1px solid gray;
     width: 100%;
+    ;
 }
 
 .teamInfo {
@@ -135,7 +152,8 @@ div.card-body {
     align-items: center;
 }
 
-.stadiumButton, .stadiumButton:hover {
+.stadiumButton,
+.stadiumButton:hover {
     color: white;
 }
 
@@ -157,10 +175,16 @@ iframe {
 
 /***** TEAMS PAGE *******/
 .team {
-    height:14vh;
-    border-bottom: 1px solid #b5acac;
+    height: 14vh;
+    border-bottom: 1px solid black;
     padding: 5px;
-    
+
+}
+
+.teamsPage {
+    background: linear-gradient(rgba(224, 255, 223, 0.84), rgba(224, 255, 223, 0.84), rgba(224, 255, 223, 0.84)), url("/styles/images/stadium1.png");
+    background-size: cover;
+    background-position: center;
 }
 
 .teamsPageLogo {
@@ -188,22 +212,22 @@ iframe {
     height: 8vh;
 }
 
-.teamColorHeadline{
-height:8vh;
-color: white;
-margin: 0;
+.teamColorHeadline {
+    height: 8vh;
+    color: white;
+    margin: 0;
 }
 
-.playerRow{
-padding-bottom: 2vh;
-padding-top: 2vh;
-border-bottom: 1px solid #cec4c4;
+.playerRow {
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+    border-bottom: 1px solid #cec4c4;
 }
 
-.playerPositionHeadline{
-border-bottom: 1px solid #cec4c4;
-padding: 2vh;
-margin: 0;
+.playerPositionHeadline {
+    border-bottom: 1px solid #cec4c4;
+    padding: 2vh;
+    margin: 0;
 }
 
 .teamLink {
@@ -219,15 +243,84 @@ margin: 0;
     color: white;
 }
 */
-
-
-
 .addressSection {
     padding: 2vh 0;
 }
 
-.playerPagePhoto{
-width:100%;
-height:30vh;
-background-color: #3c3535;
+.playerPagePhoto {
+    width: 100%;
+    height: 30vh;
+    background-color: #3c3535;
+}
+
+/********** CHAT PAGE ***********/
+.chatPage {
+    background:
+        linear-gradient(rgba(224, 255, 223, 0.72), rgba(224, 255, 223, 0.72), rgba(224, 255, 223, 0.72)), url(images/chatbackground.jpg);
+    height: 92vh;
+    background-size: cover;
+}
+
+#posts {
+    margin: 5vh auto;
+    height: 62vh;
+    width: 90%;
+    padding: 1px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.chatText {
+    padding-left: 10px;
+    height: 6vh;
+    width: 65%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid black;
+}
+
+.inputsBottom {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonsTop {
+    margin: 20vh auto;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+}
+
+.buttonSend {
+    width: 25%;
+}
+
+#posts div {
+    padding: 1vh;
+    margin: 2vh 0;
+    background-color: rgba(166, 229, 190, 0.68);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+/********ACCOUNT PAGE*******/
+
+.loginMsg{
+margin: 10vh auto;
+padding: 0 10%;
+text-align: center;
+}
+
+.accountPage{
+background-color: rgba(166, 229, 190, 0.98);
+height: 92vh;
+
+}
+
+.buttonLogInOut{
+width:40%;
+height: 50px;
 }
