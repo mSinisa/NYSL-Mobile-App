@@ -265,7 +265,7 @@ iframe {
     margin: 5vh auto;
     height: 62vh;
     width: 90%;
-    padding: 1px;
+    padding: 1px 1px 9vh 1px;
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
@@ -305,22 +305,135 @@ iframe {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+div#posts.box p {
+    word-break: break-all;
+}
+
+.textInMessages{
+margin:0;
+display: flex;
+align-self: center;
 }
 /********ACCOUNT PAGE*******/
 
-.loginMsg{
-margin: 10vh auto;
-padding: 0 10%;
-text-align: center;
+.loginMsg {
+    margin: 10vh auto;
+    padding: 0 10%;
+    text-align: center;
 }
 
-.accountPage{
-background-color: rgba(166, 229, 190, 0.98);
-height: 92vh;
+.accountPage {
+    background-color: rgba(166, 229, 190, 0.98);
+    height: 92vh;
 
 }
 
-.buttonLogInOut{
-width:40%;
-height: 50px;
+.buttonLogInOut {
+    width: 40%;
+    height: 50px;
+}
+
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 740px) and (orientation : landscape) {
+
+    /* STYLES GO HERE */
+    .NYSL {
+        background: black;
+        color: white;
+        height: 12vh;
+    }
+
+    .footer {
+        height: 12vh;
+        background-color: black;
+        padding: 2px;
+        position: fixed;
+    }
+
+    .navTop {
+        border-bottom: 1px solid black;
+        padding: 0;
+        height: 12vh;
+        background-color: #222222;
+        position: sticky;
+        /*background-color: #3d5b40;*/
+    }
+
+    div#app.container-flow {
+        margin-bottom: 12vh;
+    }
+
+    .accountPage {
+        background-color: rgba(166, 229, 190, 0.98);
+        height: 88vh;
+    }
+
+    #posts {
+        margin: 5vh auto;
+        height: 50vh;
+        width: 90%;
+        padding: 1px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    div#posts.box span {
+        word-break: break-all;
+        /*          overflow-wrap: break-word;*/
+        /*        width:90%;*/
+    }
+
+    #textInput.chatText {
+        height: 10vh;
+    }
+}
+
+@media only screen and (min-width: 740px) and (orientation: landscape) {
+    .NYSL {
+        background: black;
+        color: white;
+        height: 12vh;
+    }
+
+    .footer {
+        height: 12vh;
+        background-color: black;
+        padding: 2px;
+        position: fixed;
+    }
+
+    .navTop {
+        border-bottom: 1px solid black;
+        padding: 0;
+        height: 12vh;
+        background-color: #222222;
+        position: sticky;
+        /*background-color: #3d5b40;*/
+    }
+
+    div#app.container-flow {
+        margin-bottom: 12vh;
+    }
+
+    .accountPage {
+        background-color: rgba(166, 229, 190, 0.98);
+        height: 88vh;
+    }
+
+    #posts {
+        margin: 5vh auto;
+        height: 50vh;
+        width: 90%;
+        padding: 1px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    #textInput.chatText {
+        height: 10vh;
+    }
 }

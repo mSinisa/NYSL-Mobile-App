@@ -39,11 +39,10 @@ var app = new Vue({
         chatPage: false,
         accountPage: false,
         team: {},
-        beforeLoginMsg: true,
+        beforeLoginMsg: false,
         loginButton: false,
         logoutButton: false,
-
-
+    
     },
 
     methods: {
@@ -87,6 +86,7 @@ var app = new Vue({
                 app.logoutButton = true;
                 app.loginButton = false;
                 app.getPosts();
+                app.scrollDown();
             });
 
             //on log in call the function getPosts to show chat messages
@@ -115,7 +115,8 @@ var app = new Vue({
             var text = document.getElementById("textInput").value;
             console.log(text);
             var userName = firebase.auth().currentUser.displayName;
-            // A post entry.
+            // A post entry that wont send a message if no text there
+            if(text !="" && text !=" "){ 
             var message = {
                 messageText: text,
                 name: userName,
@@ -124,10 +125,13 @@ var app = new Vue({
             console.log(message);
             //CALL SCROLLING FUNCTION
             this.scrollDown();
+            //delete input after sending a msg
+            document.getElementById("textInput").value="";
             // Get a key for a new Post.
             firebase.database().ref('myChat').push(message);
             //Write data
             console.log("write");
+        }
         },
 
         getPosts: function () {
@@ -137,7 +141,10 @@ var app = new Vue({
                 posts.innerHTML = "";
                 var messages = data.val();
                 for (var key in messages) {
+                    //div that will contain photo and the text
                     var text = document.createElement("div");
+                    var messageText=document.createElement("p");
+                    messageText.classList.add("textInMessages");
                     var element = messages[key];
                     /* ADD USER PHOTO**********************/
                     var photo = document.createElement("img");
@@ -148,9 +155,11 @@ var app = new Vue({
                     photo.style.marginRight = "10px";
                     text.append(photo);
                     /**************************************************/
-                    text.append(element.messageText);
+                    messageText.append(element.messageText);
+                    text.append(messageText);
+//                    text.append(element.messageText);
                     posts.append(text);
-                }
+                }this.scrollDown();
             })
             console.log("getting posts");
         },
@@ -160,6 +169,7 @@ var app = new Vue({
             if (user) {
                 // User is signed in.
                 this.showPage(page);
+//                this.scrollDown();
             } else {
                 // No user is signed in.
                 alert("Please go to Account Page and Login to see this content!")
@@ -171,52 +181,33 @@ var app = new Vue({
         },
 
         changeButtonOnAuthState: function () {
-
             var user = firebase.auth().currentUser;
             firebase.auth().onAuthStateChanged(function (user) {
-
                 if (user) {
                     console.log("In", user)
                     app.loginButton = false;
                     app.logoutButton = true;
+                    app.beforeLoginMsg= false;
                 } else {
                     app.logoutButton = false;
                     app.loginButton = true;
-
+                    app.beforeLoginMsg= true;
                 }
-
             })
         }
 
-
-
-        /******** CHANGE ICON ********/
-        //icon changes no matter what
-        //        changeLogoIfLoggedIn: function () {
-        //            var accountIcon = document.getElementById("accountIcon");
-        //            var updatedIcon= accountIcon.innerHTML = "<i data-brackets-id='698' class='fas fa-unlock fa-2x'></i> <p data-brackets-id='699' class='iconText'>Account</p>";
-        //            var user = firebase.auth().currentUser;
-        //            if (user) {
-        //                // User is signed in.
-        //               return updatedIcon;
-        //            } else {
-        //                // No user is signed in.
-        //                return accountIcon;
-        //            }
-        //        }
     },
 
-    computed: {
-
+    updated(){
+        this.scrollDown();    
     },
-
+    
     created() {
         this.getPosts();
         this.changeButtonOnAuthState();
         this.getData();
         //        this.changeLogoIfLoggedIn()
     }
-
 
 });
 
