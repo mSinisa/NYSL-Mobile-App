@@ -1,0 +1,706 @@
+/* ===========================
+            DEFAULTS
+    ========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+.noMargin {
+    margin: 0;
+}
+
+.greenYellowLight {
+    color: #ACFC24;
+}
+
+.greenYellowDark {
+    color: #96EB3C;
+}
+
+.midnightBlue {
+    color: #073847;
+}
+
+ button:focus{
+    background-color: #073847 !important;
+    outline-color: #96EB3C;
+}
+
+.lightSteelBlue {
+    color: #ECEEEF;
+}
+
+.lightSlateGray {
+    color: #91A9B0;
+}
+
+.bodyContainer {
+    height: 80vh;
+    background-color: #ECEEEF;
+}
+
+a:hover {
+    text-decoration: none
+}
+
+/*  ======= NAVBAR ======= */
+nav.navbar.burgerNavbar {
+    background-color: #073847 !important;
+    color: black;
+    min-height: 10vh;
+}
+
+.navLogo {
+    height: 40px;
+    width: 40px;
+}
+
+.navText {
+    margin-left: 5%;
+    font-weight: 800;
+    color: #ECEEEF;
+}
+
+/* ++++++++ BOTTOM NAV +++++++++ */
+.bottomNav {
+    height: 10vh;
+    background-color: #073847;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.iconText {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    color: #91A9B0;
+}
+
+.bottomNavLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #91A9B0;
+    height: 100%;
+    width: 33.33%
+}
+
+.bottomNavActiveLink{
+    color:white !important;
+    border-top:3px solid #ACFC24;
+}
+
+/* *********** SCHEDULE ********* */
+
+.gamesContainer {
+    height: 72vh;
+    overflow-y: scroll;
+}
+
+.form-group {
+    margin: 0;
+}
+
+.dropDownBox {
+    height: 8vh;
+    font-size: 20px;
+    background-color: #ECEEEF;
+    border-bottom: 2px solid #073847;
+}
+
+select {
+    text-align-last: center;
+}
+
+.individualGame {
+    background-color: #ECEEEF;
+    padding: 10px 0;
+}
+
+.individualGame:not(:last-child) {
+    border-bottom: 2px solid #073847;
+}
+
+.logosNamesScore {
+    display: flex;
+    flex-direction: row;
+}
+
+.scheduleLogo {
+    height: 80px;
+    width: 80px;
+}
+
+.teamName {
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+}
+
+.score {
+    font-weight: bold;
+    font-size: 25px;
+    padding: 0;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.gameLocation {
+    margin: 10px 0 10px 0;
+    text-align: center;
+}
+
+.logoAndText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+
+.locationButton {
+    width: 90%;
+    background-color: #91A9B0;
+}
+
+.stadiumMap {
+    padding: 10px;
+}
+
+iframe {
+    width: 95%;
+    height: 95%;
+    border-radius: 5%;
+    margin: 3px;
+}
+
+.map {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 5%;
+    margin: 20px auto 5px auto;
+    background-color: #e8e8e8;
+}
+
+/************ STANDINGS PAGE *****************/
+.standingsPage {
+    height: 80vh;
+}
+
+.standingsLinksContainer {
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #073847;
+}
+
+.standingsLink {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #91A9B0;
+}
+
+.standingsLinkTeam{
+    color:#073847 !important;
+    border-bottom: 3px solid #ACFC24;   
+}
+
+.standingsTableHead {
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #91A9B0;
+    text-align: center;
+    align-items: center;
+}
+
+.teamsContainer {
+    height: 65vh;
+    overflow-y: scroll;
+}
+
+.teamInTable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.standingsLogo {
+    height: 11vh;
+}
+
+.numberInStandings {
+    width: 10%;
+    font-weight: 700;
+    text-align: center;
+}
+
+.teamLogoAndNameCell {
+    width: 35%;
+    text-align: center;
+    padding: 10px;
+}
+
+.rightTableCell {
+    width: 11%;
+    text-align: center;
+}
+
+.rightTableSide {
+    display: flex;
+    flex-direction: row;
+    width: 11%;
+    overflow-x: scroll;
+}
+
+/* PLAYER RANKING */
+.playerRankingLinks {
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #91A9B0;
+}
+
+.playerRankingLink {
+    width: 14.285%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    /* color: #073847; */
+    color: #91A9B0;
+    height:100%;
+}
+
+.playerRankingContainer {
+    height: 65vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.headlinePlRanking {
+    text-align: center;
+    margin: 0;
+    padding: 15px;
+}
+
+.fivePlayersContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fivePlayersContainer:last-child {
+    padding-bottom: 15px;
+}
+
+.numberCell {
+    width: 10%;
+    text-align: center;
+}
+
+.iconCell {
+    width: 10%;
+    text-align: center;
+}
+
+.logoCell {
+    padding-left: 0;
+}
+
+.nameCell {
+    width: 45%;
+    padding-left: 10px;
+}
+
+.logoCell {
+    text-align: center;
+    width: 20%
+}
+
+.goalsCell {
+    width: 15%;
+    text-align: center;
+}
+
+/* ******** ABOUT PAGE ********* */
+.aboutPage {
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.aboutText {
+    text-align: center;
+    margin: 0;
+    padding: 0 15px;
+    font-size: 18px;
+}
+
+.aboutText:last-child {
+    margin-bottom: 15px;
+}
+
+/* CONTACT */
+.contactPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.contactForm {
+    width: 90%;
+    margin: auto;
+}
+
+textarea.form-control.textArea {
+    height: 25vh;
+}
+
+.fontSize {
+    font-size: 18px;
+}
+
+button.sendButton {
+    background-color: #073847;
+    color: white;
+    width: 120px;
+    margin-top: 20px;
+}
+
+.contactText {
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.emailFont {
+    font-size: 24px;
+    color: #073847;
+}
+
+/* TEAMS */
+.teamsPage {
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.teamContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+    color: #073847;
+}
+
+.teamsBorder:not(:last-child) {
+    /* border-bottom: 3px solid #91A9B0; */
+    border-bottom: 2px solid #073847;
+}
+
+/* IND TEAM */
+.individualTeamContainer {
+    height: 80vh;
+    overflow-y: scroll;
+    background-color: #ECEEEF;
+    scroll-behavior: smooth;
+}
+
+.individualTeamLinksContainer {
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #073847;
+}
+
+.individualTeamLinkActive{
+    color:white !important;
+    border-bottom: 3px solid white;
+}
+
+.teamBackground {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(rgba(233, 233, 233, 0), rgba(62, 57, 57, 0.623), rgba(62, 57, 57, 0.541)), url("/images/la_bombonera.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.individualTeamPageLogo {
+    height: 20vh;
+    margin-top: 5vh;
+}
+
+.addressSection {
+    padding: 2vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teamColorHeadline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    color: white;
+    margin: 0;
+}
+
+.gameInfo {
+    border-bottom: 1px solid gray;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.teamInfo {
+    width: 35%;
+    /* margin-top: 10px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamsPageLogo {
+    width: 12vh;
+    height: 12vh;
+}
+
+.playerPositionHeadline {
+    border-bottom: 1px solid #cec4c4;
+    padding: 2vh;
+    margin: 0;
+}
+
+.playerRow {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    padding: 0 20px;
+}
+
+.playerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerJerseyBox {
+    width: 15%;
+}
+
+.playerImageBox {
+    width: 15%;
+}
+
+.playerNameBox {
+    width: 70%;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+/******* CHAT PAGE ***********/
+.chatPage {
+    background:
+        linear-gradient(rgba(223, 243, 255, 0.72), rgba(223, 243, 255, 0.72), rgba(223, 243, 255, 0.72)), url(images/chatbackground.jpg);
+    height: 80vh;
+    background-size: cover;
+    padding-top: 2vh;
+}
+
+.box {
+    height: 67vh;
+    width: 90%;
+    margin: 0 auto 2vh auto;
+    /* padding: 5vh 0; */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.inputsBottom {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+
+.chatText {
+    padding: 0 10px;
+    height: 6vh;
+    width: 73%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid black;
+    margin-right: 2%;
+}
+
+.buttonSend {
+    width: 25%;
+}
+
+.messageContainer {
+    padding: 1vh;
+    margin: 2vh 0;
+    background-color: rgba(176, 253, 160, 0.664);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.userName{
+    padding-bottom:1vh;
+    margin:0;
+}
+
+.photoAndTextContainer{
+    display:flex;
+    flex-direction: row;
+}
+
+.messageText {
+    word-break: break-all;
+    margin: 0;
+    display: flex;
+    align-self: center;
+}
+
+.userPhoto {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/*********************** LOCATIONS PAGE *********************/
+.locationsPage {
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.locationsImage {
+    width: 90%;
+    margin: auto;
+    height: 30vh;
+}
+
+.locationCard {
+    margin: 2vh auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/************* ACCOUNT PAGE *************/
+.accountPage{
+    height:80vh;
+    /* background-color: rgba(177, 225, 255, 0.72); */
+}
+
+.loginMsg {
+    padding: 10vh 10%;
+    text-align: center;
+}
+
+.accountPageButton {
+    width: 35%;
+    margin-bottom: 5vh;
+}
+
+.logoutButton {
+    width: 35%;
+    margin-top: 10vh;
+}
+
+/* MEDIA QUERRIES */
+@media only screen and (min-device-width : 375px) and (max-device-width : 740px) and (orientation : landscape) {
+
+    .bottomNav {
+        height: 14vh;
+        background-color: #073847;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .dropDownBox {
+        height: 10vh;
+        font-size: 20px;
+        background-color: #ECEEEF;
+        border-bottom: 2px solid #073847;
+    }
+
+    .standingsLinksContainer {
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid #073847;
+    }
+
+    .standingsTableHead {
+        height: 9vh;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #91A9B0;
+        text-align: center;
+        align-items: center;
+    }
+
+    .playerRankingLinks {
+        height: 9vh;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #91A9B0;
+    }
+
+    .individualTeamLinksContainer {
+        height: 12vh;
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid #073847;
+    }
+
+    .chatText {
+        padding: 0 10px;
+        height: 6vh;
+        width: 73%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border: 1px solid black;
+        margin: 0 2% 2vh 0;
+    }
+
+}
+
