@@ -1,0 +1,513 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>NYSL</title>
+  <link rel="shortcut icon" sizes="128x128" href="/images/nysl_logo128.png">
+    <link rel="shortcut icon" sizes="196x196" href="/images/nysl_logo196.png">
+    <link rel="apple-touch-icon" href="/images/nysl_logo60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/nysl_logo76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/nysl_logo120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/nysl_152.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <div id="app" class="container-flow">
+
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark burgerNavbar" id="navbarTop" v-show="navbarTop">
+      <a class="navbar-brand" href="#"><img src="/images/nysl_logo.png" class="navLogo"><span class="navText">NYSL</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <!-- <li id="homeLi" class="nav-item active" v-on:click="burgerMenuMakeLinkActive('homeLi')">
+            <a class="nav-link" v-on:click="showPage('schedulePage')" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">Home
+              </a> 
+          </li> -->
+          <li id="aboutLi" class="nav-item" v-on:click="makeLinkActive('aboutLi', 'active')">
+            <a class="nav-link" v-on:click="showPage('aboutPage')" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">About</a>
+          </li>
+          <li id="contactLi" class="nav-item" v-on:click="makeLinkActive('contactLi', 'active')">
+            <a class="nav-link" v-on:click="showPage('contactPage')" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">Contact</a>
+          </li>
+          <li id="locationsLi" class="nav-item" v-on:click="makeLinkActive('locationsLi', 'active')">
+            <a class="nav-link" v-on:click="showPage('locationsPage')" href="#" data-toggle="collapse" data-target="#navbarSupportedContent" href="#">Locations</a>
+          </li>
+          <li id="chatLi" class="nav-item" v-on:click="makeLinkActive('chatLi', 'active')">
+            <a class="nav-link" href="#" v-on:click="gotoPageIfSignedIn('chatPage')" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">Chat</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- -------- BODY ----------- -->
+    <div class="bodyContainer">
+
+      <div id="schedulePage" class="schedulePage" v-show="page == 'schedulePage'">
+
+        <div class="form-group">
+          <select class="form-control dropDownBox" id="dropDownBody" v-model="dateOptions">
+            <option class="selectedOption" selected>
+              <h5 class="selectedOption">Select date</h5>
+            </option>
+            <option v-for="date in gameDates">
+              <h5 class="selectedOption">{{date}}</h5>
+            </option>
+          </select>
+        </div>
+        <div class="gamesContainer">
+          <div v-for="(game,index) in getGamesByDate()" class="individualGame">
+
+            <div class="logosNamesScore">
+              <div class="logoAndText col-5">
+                <img class="scheduleLogo" v-bind:src="'/images/' + game.homeTeamLogo +'.png'">
+                <p class="teamName homeTeamName">{{game.homeTeam}}</p>
+              </div>
+              <p class="score col-2">{{game.gameScore}}</p>
+              <div class="logoAndText col-5">
+                <img class="scheduleLogo" v-bind:src="'/images/' + game.awayTeamLogo +'.png'">
+                <p class="teamName"> {{game.awayTeam}}</p>
+              </div>
+            </div>
+            <!-- FIX DROPDOWN ON BUTTONS -->
+            <p class="buttonDiv">
+              <button class="btn btn-outline-dark locationButton" type="button" data-toggle="collapse" :data-target="'#collapse'+index"
+                aria-expanded="false" :aria-controls="'collapse'+index">
+                {{game.gameLocation}}
+              </button>
+            </p>
+            <div class="collapse" :id="'collapse' + index">
+              <div class="card card-body stadiumMap">
+                <p class="noMargin text-center">Address</p>
+                <p class="noMargin text-center">{{game.address}}</p>
+                <div class="map"><iframe v-bind:src="game.mapsrc" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="standingsPage" class="standingsPage" v-show="page == 'standingsPage'">
+
+        <div class="standingsLinksContainer">
+          <a href="#" id="standingsTeamLink" class="standingsLink" v-on:click="displayRankingPages('teamRankingContainer');makeLinkActive('standingsTeamLink','standingsLinkTeam')">
+            <h5 class="noMargin">Team</h5>
+          </a>
+          <a href="#" id="standingsIndividualLink" class="standingsLink" v-on:click="displayRankingPages('playersRanking');makeLinkActive('standingsIndividualLink','standingsLinkTeam')">
+            <h5 class="noMargin">Individual</h5>
+          </a>
+        </div>
+
+        <div class="teamRankingContainer" id="teamRankingContainer" v-show="subpage == 'teamRankingContainer'">
+          <div class="standingsTableHead">
+            <span class="numberInStandings">#</span>
+            <p class="teamLogoAndNameCell noMargin">Team</p>
+            <p class="noMargin rightTableCell">PTS</p>
+            <p class="noMargin rightTableCell">GP</p>
+            <p class="noMargin rightTableCell">W</p>
+            <p class="noMargin rightTableCell">D</p>
+            <p class="noMargin rightTableCell">L</p>
+          </div>
+
+          <div class="teamsContainer ">
+            <div class="teamInTable" v-for="(team, index) in sortTeamsByPoints()">
+              <span class="numberInStandings">{{index + 1}}</span>
+              <div class="teamLogoAndNameCell">
+                <img :src="'images/' + team.logo + '.png'" class="standingsLogo">
+                <p class="noMargin">{{team.Name}}</p>
+              </div>
+              <p class="noMargin rightTableCell">{{team.pts}}</p>
+              <p class="noMargin rightTableCell">{{team.gp}}</p>
+              <p class="noMargin rightTableCell">{{team.won}}</p>
+              <p class="noMargin rightTableCell">{{team.draw}}</p>
+              <p class="noMargin rightTableCell">{{team.lost}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="playersRanking" v-show="subpage == 'playersRanking'">
+          <div class="playerRankingLinks">
+            <a href="#G" class="playerRankingLink">G</a>
+            <a href="#S" class="playerRankingLink">S</a>
+            <a href="#PS" class="playerRankingLink">PS</a>
+            <a href="#FC" class="playerRankingLink">FC</a>
+            <a href="#FS" class="playerRankingLink">FS</a>
+            <a href="#YC" class="playerRankingLink">YC</a>
+            <a href="#RC" class="playerRankingLink">RC</a>
+          </div>
+
+          <div id="playerRankingContainer" class="playerRankingContainer">
+
+            <h5 class="headlinePlRanking" id="G">Goals</h5>
+            <div class="fivePlayersContainer" v-for="(goals,index) in  sortPlayersByKey('goals')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{goals.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(goals.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{goals.goals}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="S">Shots</h5>
+            <div class="fivePlayersContainer" v-for="(shot,index) in  sortPlayersByKey('shots')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{shot.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(shot.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{shot.shots}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="PS">Passes</h5>
+            <div class="fivePlayersContainer" v-for="(pass,index) in  sortPlayersByKey('passes')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{pass.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(pass.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{pass.passes}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="FC">Fouls Committed</h5>
+            <div class="fivePlayersContainer" v-for="(fouls,index) in  sortPlayersByKey('fouls_committed')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{fouls.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(fouls.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{fouls.fouls_committed}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="FS">Fouls Suffered</h5>
+            <div class="fivePlayersContainer" v-for="(foulsS,index) in  sortPlayersByKey('fouls_suffered')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{foulsS.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(foulsS.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{foulsS.fouls_suffered}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="YC">Yellow Cards</h5>
+            <div class="fivePlayersContainer" v-for="(yellowC,index) in  sortPlayersByKey('yellow_cards')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{yellowC.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(yellowC.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{yellowC.yellow_cards}}</h5>
+            </div>
+
+            <h5 class="headlinePlRanking" id="RC">Red Cards</h5>
+            <div class="fivePlayersContainer" v-for="(redC,index) in  sortPlayersByKey('red_cards')">
+              <h5 class=" numberCell">{{index + 1}}</h5>
+              <i class="far fa-user fa-2x iconCell"></i>
+              <h5 class=" nameCell">{{redC.name}}</h5>
+              <div class=" logoCell">
+                <img :src="'images/' + findLogoForPlayer(redC.name) + '.png'" class="standingsLogo ">
+              </div>
+              <h5 class="goalsCell">{{redC.red_cards}}</h5>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="aboutPage" class="aboutPage" v-show="page == 'aboutPage'">
+        <h3 class="headlinePlRanking">Mission</h3>
+        <p class="aboutText">To support young athletes living in Chicago's northside neighborhoods,
+          who have an interest in learning and playing soccer, with opportunities to learn and practice skills
+          related to the game of soccer, specifically those skills around team cooperation and good sportmanship</p>
+        <h3 class="headlinePlRanking">Vision</h3>
+        <p class="aboutText">The Northside Youth Soccer League aspires to develop strong, well-rounded, and mindful
+          athletes through the
+          building of character, self-discipline, and leadership.</p>
+        <h3 class="headlinePlRanking">General Information</h3>
+        <p class="aboutText">The Northside Youth Soccer League was established in 1996 to provide athletes residing in
+          Chicago's
+          northside neighborhoods an environment in which to learn and play soccer. To be a member of NYSL,
+          you must be between the ages of 4-12 and reside in a Chicago northside neighborhood.
+          NYSL is ran by a small full-time staff, and relies on the generous volunteer time of parents and previous
+          league members.</p>
+      </div>
+
+      <div id="contactPage" class="contactPage" v-show="page == 'contactPage'">
+        <!-- <p class="contactText">Please email us at: </p>
+         <a href="mailto:nysl@chisoccer.org">
+          <p class="contactText emailFont">nysl@chisoccer.org</p>
+        </a>
+        <p class="contactText">We will reply to your email as soon as we can.</p> -->
+
+        <form class="contactForm">
+          <div class="form-group">
+            <label class="fontSize" for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group mt-2">
+            <label class="fontSize" for="exampleFormControlTextarea1">Message:</label>
+            <textarea class="form-control textArea" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn sendButton">Send</button>
+          </div>
+          <p class="contactText">We will reply to you as soon as we can.</p>
+        </form>
+
+
+
+      </div>
+
+      <div id="teamsPage" class="teamsPage" v-show="page == 'teamsPage'">
+        <div v-for="(team, index) in teams" class="teamsBorder">
+
+          <a href="#" v-on:click="getTeam(team); showPage('individualTeamPage');removeActiveClassFromLinks('scheduleLink', 'standingsLink', 'teamsLink', 'accountLink', 'bottomNavActiveLink')" class="teamContainer">
+            <div class="col-3"> <img :src="'images/' + team.logo + '.png'" class="standingsLogo"> </div>
+            <h5 class="col-6 noMargin">{{team.Name}}</h5>
+            <i class="fas fa-angle-right fa-2x col-3 text-center"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <div id="individualTeamPage" class="individualTeamPage" v-show="page == 'individualTeamPage'">
+        <div class="individualTeamLinksContainer" :style="{ 'background-color': team.color }">
+          <a href="#teamBackground" class="standingsLink" id="indTeamOverviewLink" v-on:click="makeLinkActive('indTeamOverviewLink', 'individualTeamLinkActive')">
+            <h5 class="noMargin">Overview</h5>
+          </a>
+          <a href="#stats" class="standingsLink" id="indTeamStatsLink" v-on:click="makeLinkActive('indTeamStatsLink', 'individualTeamLinkActive')">
+            <h5 class="noMargin">Stats</h5>
+          </a>
+          <a href="#players" class="standingsLink" id="indTeamPlayersLink" v-on:click="makeLinkActive('indTeamPlayersLink', 'individualTeamLinkActive')">
+            <h5 class="noMargin">Players</h5>
+          </a>
+        </div>
+
+        <div class="individualTeamContainer">
+          <div class="teamBackground" id="teamBackground">
+            <img v-bind:src="'/images/' + team.logo  + '.png'" class="individualTeamPageLogo">
+            <h3 class="text-white">{{team.Name}}</h3>
+            <!-- <div><i class="fas fa-phone fa-2x"></i> <i class="far fa-envelope fa-2x"></i> <i class="fab fa-instagram fa-2x"></i>
+            <i class="fab fa-twitter fa-2x"></i> <i class="fab fa-facebook-f fa-2x"></i>
+          </div> -->
+          </div>
+          <div class="addressSection">
+            <p class="noMargin">ADDRESS</p>
+            <h3 class="noMargin">{{team.stadium_name}}</h3>
+            <p class="noMargin">{{team.address}}</p>
+          </div>
+          <div class="homeSchedule">
+            <h4 :style="{ 'background-color': team.color }" class="teamColorHeadline">Schedule</h4>
+
+            <div v-for="schedule in team.schedule">
+              <p class="text-center noMargin mt-2">{{schedule.date}}</p>
+
+              <div class="gameInfo">
+                <p class="teamInfo"><img class="scheduleLogo" v-bind:src="'/images/' + schedule.game1logo1 +'.png'">{{schedule.game1team1}}</p>
+                <p class="score">{{schedule.game1score}}</p>
+                <p class="teamInfo"><img class="scheduleLogo" v-bind:src="'/images/' + schedule.game1logo2 +'.png'">{{schedule.game1team2}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 :style="{ 'background-color': team.color }" class="teamColorHeadline flexJustifyAlignCenter">Stats</h4>
+            <h4 class="text-center playerPositionHeadline" id="stats">2018</h4>
+            <div class="d-flex justify-content-between mt-3">
+              <div class="d-flex flex-column align-items-center col-4 "><img class="teamsPageLogo" v-bind:src="'/images/' + team.logo  + '.png'">
+                <p class="text-center">{{team.Name}}</p>
+              </div>
+              <div class="d-flex flex-column align-items-center col-4"><img class="teamsPageLogo " src="/images/nysl_logo.png">
+                <p>NYSL Avg.</p>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.goals}}</p>
+              <p class="col-5 text-center">Goals</p>
+              <p class="text-center col-3">{{league.goals}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.goals_conceded}}</p>
+              <p class="col-5 text-center">Goals Conceded</p>
+              <p class="text-center col-3">{{league.goals_conceded}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.shots}}</p>
+              <p class="col-5 text-center">Shots</p>
+              <p class="text-center col-3">{{league.shots}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.on_target}}</p>
+              <p class="col-5 text-center">Shots on Target</p>
+              <p class="text-center col-3">{{league.on_target}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.passes}}</p>
+              <p class="col-5 text-center">Passes</p>
+              <p class="text-center col-3">{{league.passes}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.fouls_suffered}}</p>
+              <p class="col-5 text-center">Fouls Suffered</p>
+              <p class="text-center col-3">{{league.fouls_suffered}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.fouls_committed}}</p>
+              <p class="col-5 text-center">Fouls committed</p>
+              <p class="text-center col-3">{{league.fouls_committed}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.yellow_cards}}</p>
+              <p class="col-5 text-center">Yellow cards</p>
+              <p class="text-center col-3">{{league.yellow_cards}}</p>
+            </div>
+            <div class="d-flex justify-content-around">
+              <p class="text-center col-3">{{team.red_cards}}</p>
+              <p class="col-5 text-center">Red cards</p>
+              <p class="text-center col-3">{{league.red_cards}}</p>
+            </div>
+          </div>
+          <!-- FIX THIS PART -->
+          <div id="players" v-if='team.players'>
+            <h4 :style="{ 'background-color': team.color }" class="teamColorHeadline">Players</h4>
+            <div class="playersTextContainer" v-for="player in team.players">
+              <!-- <h5 class="text-center playerPositionHeadline" >{{player.position}}</h5> -->
+              <div class="playerRow">
+                <div class=" playerContainer playerJerseyBox">
+                  <h4 class="noMargin" :style="{ 'color': team.color }">{{player.jersey}}</h4>
+                </div>
+                <div class=" playerContainer playerImageBox"><i class="far fa-user fa-2x"></i></div>
+                <div class=" playerContainer playerNameBox">
+                  <h5 class=" noMargin" :style="{ 'color': team.color }">{{player.name}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="chatPage" class="chatPage" v-show="page == 'chatPage'">
+        <div id="posts" class="box">
+          Loading posts...
+        </div>
+
+        <div class="inputsBottom">
+          <input id="textInput" class="chatText" type="text" placeholder="Your message...">
+          <button id="create-post" class="buttonSend button is-primary btn btn-outline-dark" v-on:click="writeNewPost()">Send</button>
+        </div>
+      </div>
+
+      <div id="locationsPage" class="locationsPage" v-show="page == 'locationsPage'">
+   
+        <div class="card text-center locationCard" style="width: 90%;"  v-for="(team,index) in teams">
+          <img class="card-img-top " :src="'images/' + team.stadium_image + '.png'" alt="Card image cap">
+          <div class="card-body">
+              <p class="noMargin">STADIUM NAME</p>
+              <h4>{{team.stadium_name}}</h4>
+              <p class="noMargin">HOST TEAM</p>
+              <h5>{{team.Name}}</h5>
+              <p class="noMargin">ADDRESS</p>
+              <h5>{{team.address}}</h5>
+
+              <p class="buttonDiv">
+                  <button class="btn btn-outline-dark locationButton" type="button" data-toggle="collapse" :data-target="'#collapse'+index"
+                    aria-expanded="false" :aria-controls="'collapse'+index">
+                    Map
+                  </button>
+                </p>
+                <div class="collapse" :id="'collapse' + index">
+                  <div class="card card-body stadiumMap">
+                    <!-- <p class="noMargin text-center">Address</p>
+                    <p class="noMargin text-center">{{team.address}}</p> -->
+                    <div class="map"><iframe v-bind:src="team.mapsrc" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+                  </div>
+                </div>
+
+          </div>
+        </div>
+      </div>
+
+    <div id="accountPage" class="accountPage" v-show="page == 'accountPage'">
+      <h5 id="beforeLoginMsg" class="loginMsg" v-show="beforeLoginMsg">Please Login below to see full content</h5>
+      <div class="d-flex flex-column align-items-center">
+          <button id="loginButton" v-show="loginButton" class=" btn btn-outline-dark accountPageButton" v-on:click="login()">Login</button>
+          <button id="logoutButton" v-show="logoutButton" class=" btn btn-outline-dark logoutButton" v-on:click="logout()">Logout</button>
+      </div>
+     
+    </div>
+
+    </div>
+    <!-- -------- END ------------ -->
+    <div class="bottomNav fixed-bottom" id="bottomNav">
+      <a href="#" class="bottomNavLink" id="scheduleLink"  v-on:click="showPage('schedulePage');makeLinkActive('scheduleLink', 'bottomNavActiveLink')"><i class="fas fa-futbol fa-2x"></i>
+        <p class="iconText">Schedule</p>
+      </a>
+      <a href="#" class="bottomNavLink" id="standingsLink"  v-on:click="showPage('standingsPage');makeLinkActive('standingsLink', 'bottomNavActiveLink')"><i class="fas fa-list-ol fa-2x"></i>
+        <p class="iconText">Standings</p>
+      </a>
+      <a href="#" class="bottomNavLink" id="teamsLink" v-on:click="showPage('teamsPage');makeLinkActive('teamsLink', 'bottomNavActiveLink')"><i class="fas fa-users fa-2x"></i>
+        <p class="iconText">Teams</p>
+      </a>
+      <!-- <a href="#" class="bottomNavLink" ><i class="fas fa-comments fa-2x"></i>
+        <p class="iconText">Chat</p>
+      </a> -->
+      <a href="#" class="bottomNavLink" id="accountLink" v-on:click="showPage('accountPage');makeLinkActive('accountLink', 'bottomNavActiveLink')"><i id="lock" class="fas fa-lock fa-2x"></i>
+        <p class="iconText">Account</p>
+      </a>
+    </div>
+
+
+
+  </div>
+  
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD0yE-jjsaojElg7tWazxRmh3tj35pdiZs",
+    authDomain: "nyslapp-52be4.firebaseapp.com",
+    databaseURL: "https://nyslapp-52be4.firebaseio.com",
+    projectId: "nyslapp-52be4",
+    storageBucket: "nyslapp-52be4.appspot.com",
+    messagingSenderId: "746370112904"
+  };
+  firebase.initializeApp(config);
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="info.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
