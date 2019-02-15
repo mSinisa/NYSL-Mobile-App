@@ -1,4 +1,4 @@
-var app = new Vue({
+let app = new Vue({
   el: "#app",
   data: {
 
@@ -13,8 +13,6 @@ var app = new Vue({
     //non repeated game dates
     gameDates: [],
     page: "schedulePage",
-    // teamRankingContainer: true,
-    // playersRanking: false 
     subpage: "teamRankingContainer",
     navbarTop: true,
     loginButton: true,
@@ -25,35 +23,34 @@ var app = new Vue({
 
   methods: {
 
-    getData: function () {
+    getData() {
       fetch(this.url, {
           method: "GET",
         })
-        .then(function (data) {
+        .then(data => {
           return data.json();
         })
-        .then(function (myData) {
+        .then(myData => {
           app.league = myData.league;
           app.games = myData.games;
           app.teams = myData.teams;
           app.getAllPlayers();
           app.collectGameDates();
-
         })
     },
 
     //*********** SCHEDULE PAGE *********** */
-    collectGameDates: function () {
-      for (var i = 0; i < this.games.length; i++) {
+    collectGameDates() {
+      for (let i = 0; i < this.games.length; i++) {
         if (this.gameDates.indexOf(this.games[i]["date"]) == -1) {
           this.gameDates.push(this.games[i]["date"]);
         }
       }
     },
 
-    getGamesByDate: function () {
-      var scheduledGames = [];
-      for (var i = 0; i < this.games.length; i++) {
+    getGamesByDate () {
+      let scheduledGames = [];
+      for (let i = 0; i < this.games.length; i++) {
         if (this.games[i]["date"] == this.dateOptions) {
           scheduledGames.push(this.games[i]);
         } else {
@@ -66,31 +63,26 @@ var app = new Vue({
     },
 
     //********** STANDINGS **************/
-    sortTeamsByPoints: function () {
-      var sortedTeams = this.teams.slice().sort(function (a, b) {
-        return b.pts - a.pts;
-      });
-      return sortedTeams;
+    sortTeamsByPoints () {
+      return this.teams.slice().sort((a, b)=> b.pts - a.pts)
     },
 
-    getAllPlayers: function () {
-      for (var i = 0; i < this.teams.length; i++) {
-        for (var j = 0; j < this.teams[i]["players"].length; j++) {
+    getAllPlayers () {
+      for (let i = 0; i < this.teams.length; i++) {
+        for (let j = 0; j < this.teams[i]["players"].length; j++) {
           this.players.push(this.teams[i]["players"][j]);
         }
       }
     },
 
-    sortPlayersByKey: function (key) {
-      var sortedPlayers = this.players.slice().sort(function (a, b) {
-        return b[key] - a[key];
-      });
+    sortPlayersByKey (key) {
+      let sortedPlayers = this.players.slice().sort((a, b)=> b[key] - a[key]);
       return sortedPlayers.slice(0, 5);
     },
 
-    findLogoForPlayer: function (player) {
-      for (var i = 0; i < this.teams.length; i++) {
-        for (var j = 0; j < this.teams[i]["players"].length; j++) {
+    findLogoForPlayer (player) {
+      for (let i = 0; i < this.teams.length; i++) {
+        for (let j = 0; j < this.teams[i]["players"].length; j++) {
           if (this.teams[i]["players"][j]["name"] == player) {
             return this.teams[i]["logo"];
           }
@@ -99,15 +91,15 @@ var app = new Vue({
     },
 
     // TEAMS
-    getTeam: function (team) {
+    getTeam (team) {
       this.team = team;
     },
 
-    displayRankingPages: function (id) {
+    displayRankingPages (id) {
       this.subpage = id;
     },
 
-    showPage: function (pagename) {
+    showPage (pagename) {
       if (pagename == "individualTeamPage") {
         this.page = pagename;
         this.hideNav();
@@ -117,35 +109,33 @@ var app = new Vue({
       }
     },
 
-    hideNav: function () {
+    hideNav () {
       this.navbarTop = false;
     },
 
-    login: function () {
+    login () {
       // Provider
-      var provider = new firebase.auth.GoogleAuthProvider();
+      let provider = new firebase.auth.GoogleAuthProvider();
       // How to Log In           
-      firebase.auth().signInWithPopup(provider).then(function () {
-        console.log("logged in-> login()");
+      firebase.auth().signInWithPopup(provider).then( () => {
       });
     },
 
-    logout: function () {
+    logout () {
       firebase.auth().signOut().then(function () {
-        console.log("logged out -> logout()")
-      }, function (error) {
+      }, error => {
         // An error happened.
+        console.log(error);
       });
     },
 
-    changeButtonAndMsgOnAuthState: function () {
-      console.log("in change auth");
-      var user = firebase.auth().currentUser;
-      firebase.auth().onAuthStateChanged(function (user) {
+    changeButtonAndMsgOnAuthState () {
+      let user = firebase.auth().currentUser;
+      firebase.auth().onAuthStateChanged((user)=> {
         if (user) {
           app.loginButton = false;
           app.logoutButton = true;
-          var name = user.displayName;
+          let name = user.displayName;
           document.getElementById("beforeLoginMsg").innerHTML = `Welcome, ${name}`;
           document.getElementById("lock").classList.value="fas fa-lock-open fa-2x";
         } else {
@@ -157,19 +147,18 @@ var app = new Vue({
       })
     },
 
-    writeNewPost: function () {
+    writeNewPost () {
       //get text value that user is about to send
-      var text = document.getElementById("textInput").value;
-      var user = firebase.auth().currentUser;
-      var userName = user.displayName;
+      let text = document.getElementById("textInput").value;
+      let user = firebase.auth().currentUser;
+      let userName = user.displayName;
       // A post entry that wont send a message if no text there
       if (text != "" && text != " ") {
-        var message = {
+        let message = {
           messageText: text,
           name: userName,
           profileImg: user.photoURL
         }
-        console.log(message);
         //delete input after sending a msg
         document.getElementById("textInput").value = "";
         // Get a key for a new Post.
@@ -179,28 +168,28 @@ var app = new Vue({
       }
     },
 
-    getPosts: function () {
-      firebase.database().ref('myChat').on('value', function (data) {
-        var posts = document.getElementById("posts");
+    getPosts () {
+      firebase.database().ref('myChat').on('value', data => {
+        let posts = document.getElementById("posts");
         posts.innerHTML = "";
-        var messages = data.val();
-        for (var key in messages) {
+        let messages = data.val();
+        for (let key in messages) {
           // div that will contain photo, text and user's name
-          var messageContainer = document.createElement("div");
+          let messageContainer = document.createElement("div");
           messageContainer.classList.add("messageContainer");
 
-          var userName = document.createElement("p");
+          let userName = document.createElement("p");
           userName.append(messages[key].name);
           userName.classList.add("userName");
 
-          var photoAndTextContainer = document.createElement("div");
+          let photoAndTextContainer = document.createElement("div");
           photoAndTextContainer.classList.add("photoAndTextContainer");
 
-          var messageText = document.createElement("p");
+          let messageText = document.createElement("p");
           messageText.append(messages[key].messageText);
           messageText.classList.add("messageText");
 
-          var photo = document.createElement("img");
+          let photo = document.createElement("img");
           photo.setAttribute("src", messages[key].profileImg);
           photo.classList.add("userPhoto");
 
@@ -217,12 +206,12 @@ var app = new Vue({
       console.log("getting posts");
     },
 
-    scrollDown: function () {
+    scrollDown () {
       document.getElementById('posts').scrollTop = document.getElementById('posts').scrollHeight
     },
 
-    gotoPageIfSignedIn: function (page) {
-      var user = firebase.auth().currentUser;
+    gotoPageIfSignedIn (page) {
+      let user = firebase.auth().currentUser;
       if (user) {
           this.showPage(page);
       } else {
@@ -231,7 +220,7 @@ var app = new Vue({
       }
     },
 
-    makeLinkActive: function(linkId, activeClass){
+    makeLinkActive(linkId, activeClass){
       //when clicking on burgerMenu links need to remove active class from the bottom nav
       if(linkId == "aboutLi" || linkId =="contactLi" || linkId == "locationsLi" || linkId == "chatLi"){
         this.removeActiveClassFromLinks("scheduleLink", "standingsLink", "teamsLink", "accountLink", "bottomNavActiveLink");
@@ -254,10 +243,8 @@ var app = new Vue({
     },
 
     removeActiveClassFromLinks(linkId1,linkId2,linkId3, linkId4, activeClass){
-      document.getElementById(linkId1).classList.remove(activeClass);
-      document.getElementById(linkId2).classList.remove(activeClass);
-      document.getElementById(linkId3).classList.remove(activeClass);
-      document.getElementById(linkId4).classList.remove(activeClass);
+      let links = [linkId1, linkId2, linkId3, linkId4];
+      links.forEach(link => document.getElementById(link).classList.remove(activeClass));
     },    
 
   },
@@ -274,7 +261,6 @@ var app = new Vue({
     document.getElementById("scheduleLink").classList.add("bottomNavActiveLink");
     document.getElementById("standingsTeamLink").classList.add("standingsLinkTeam");
     document.getElementById("indTeamOverviewLink").classList.add("individualTeamLinkActive");
-   
   },
 
   computed: {
